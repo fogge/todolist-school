@@ -3,10 +3,10 @@ let todoList = new TodoList([]);
 let doneList = new DoneList([]);
 
 // Loopar genom todoList med of-loop
-function loopMyToDoList(){
-  $('.my-chore-list').empty();
-  for (let chore of todoList.items) {
-    $('.my-chore-list').append(`
+function updateListView(list, listSelector){
+  $(listSelector).empty();
+  for (let chore of list.items) {
+    $(listSelector).append(`
       <li class="list-group-item">
         ${chore.print()}
       </li>
@@ -14,15 +14,9 @@ function loopMyToDoList(){
     }
 }
 
-function loopMyDoneList(){
-  $('.done-chore-list').empty();
-  for (let chore of doneList.items) {
-    $('.done-chore-list').append(`
-      <li class="list-group-item">
-        ${chore.print()}
-      </li>
-      `);
-    }
+function updateAllViews() {
+  updateListView(todoList, '.todo-chore-list');
+  updateListView(doneList, '.done-chore-list');
 }
 
 // Knapptryckning för lägg till längst ner i to-do-lista
@@ -30,7 +24,7 @@ $('#add-last-button').on('click', function(){
   const myText = $('#add-chore-to-list').val();
   const myItem = new TodoItem(myText);
   todoList.add(myItem);
-  loopMyToDoList();
+  updateAllViews();
 });
 
 // Knapptryckning för lägg till högst upp i to-do-lista
@@ -38,75 +32,45 @@ $('#add-to-top-button').on('click', function(){
   const myText = $('#add-chore-to-list').val();
   const myItem = new TodoItem(myText);
   todoList.addToTop(myItem);
-  loopMyToDoList();
+  updateAllViews();
 });
 
 // Knapptryckning ta bort sist i to-do-listan
 $('#remove-last-button').on('click', function(){
   todoList.removeFromBottom();
-  loopMyToDoList();
+  updateAllViews();
 });
 
 
 // Knapptryckning ta bort sist i to-do-listan
 $('#remove-first-button').on('click', function(){
   todoList.removeFromTop();
-  loopMyToDoList();
+  updateAllViews();
 });
 
-// Ta bort med hjälp av indexnummer
-function removeFromListByIndex(index){
-  if (index >= 0) {
-  return todoList.items.splice(index, 1)[0];
-  }
-}
 // Knapptryckning ta bort med index-nummer
 $('#remove-with-index-number-button').on('click', function(){
   let index = $('#remove-chore-from-index').val();
-  removeFromListByIndex(index);
-  loopMyToDoList();
+  todoList.removeWithIndex(index);
+  updateAllViews();
 });
 
-
-// Find index by description
-function findIndexByName(indexName){
-  let index;
-  for (let i = 0; i < todoList.items.length; i++) {
-   if(todoList.items[i].description === indexName) {
-     index = i;
-   };
- }
- return index;
-}
-
-// Ta bort med hjälp av indexnamn
-function removeFromListByName(indexName) {
- let index = findIndexByName(indexName);
- return removeFromListByIndex(index);
-}
 
 // Knapptryckning ta bort med hjälp av indexnamn
 $('#remove-with-name-button').on('click', function(){
   const indexName = $('#remove-chore-from-index').val();
-  removeFromListByName(indexName);
-  loopMyToDoList();
+  todoList.removeByName(indexName);
+  updateAllViews();
 });
-
-// Ta bort från to-do och lägg till till done
-function removeFromListAndAddToDone(indexName){
-  let index = findIndexByName(indexName);
-  let myObject = todoList.items[index];
-  doneList.items.push(myObject);
-  removeFromListByIndex(index);
-  return doneList.items;
-}
 
 // Knapptryck för flytt från to-do till done
 $('#remove-from-list-and-add-button').on('click', function(){
   let indexName = $('#remove-and-add-to-done').val();
-  removeFromListAndAddToDone(indexName);
-  loopMyToDoList();
-  loopMyDoneList();
+  let index = todoList.findIndexByName(indexName);
+  let myObject = todoList.items[index];
+  doneList.items.push(myObject);
+  todoList.removeWithIndex(index);
+  updateAllViews();
 });
 
 

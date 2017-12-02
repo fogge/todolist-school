@@ -1,10 +1,11 @@
-let todoList = [];
-let doneList = [];
+let todoList = new TodoList([]);
+
+let doneList = new DoneList([]);
 
 // Loopar genom todoList med of-loop
 function loopMyToDoList(){
   $('.my-chore-list').empty();
-  for (let chore of todoList) {
+  for (let chore of todoList.items) {
     $('.my-chore-list').append(`
       <li class="list-group-item">
         ${chore.print()}
@@ -15,7 +16,7 @@ function loopMyToDoList(){
 
 function loopMyDoneList(){
   $('.done-chore-list').empty();
-  for (let chore of doneList) {
+  for (let chore of doneList.items) {
     $('.done-chore-list').append(`
       <li class="list-group-item">
         ${chore.print()}
@@ -26,8 +27,8 @@ function loopMyDoneList(){
 
 // Lägg till längst ner i to-do-lista
 function addToList(item) {
-  todoList.push(item);
-  return todoList;
+  todoList.items.push(item);
+  return todoList.items;
 }
 // Knapptryckning för lägg till längst ner i to-do-lista
 $('#add-last-button').on('click', function(){
@@ -39,8 +40,8 @@ $('#add-last-button').on('click', function(){
 
 // Lägg till högst upp i to-do-lista
 function addToTopOfList(item) {
-  todoList.unshift(item);
-  return todoList;
+  todoList.items.unshift(item);
+  return todoList.items;
 }
 
 // Knapptryckning för lägg till högst upp i to-do-lista
@@ -53,7 +54,7 @@ $('#add-to-top-button').on('click', function(){
 
 // Ta bort sist i to-do-listan
 function removeFromBottomOfList(){
-  return todoList.pop();
+  return todoList.items.pop();
 }
 
 // Knapptryckning ta bort sist i to-do-listan
@@ -64,7 +65,7 @@ $('#remove-last-button').on('click', function(){
 
 // Ta bort sist i to-do-listan
 function removeFromTopOfList(){
-  return todoList.shift();
+  return todoList.items.shift();
 }
 
 // Knapptryckning ta bort sist i to-do-listan
@@ -76,7 +77,7 @@ $('#remove-first-button').on('click', function(){
 // Ta bort med hjälp av indexnummer
 function removeFromListByIndex(index){
   if (index >= 0) {
-  return todoList.splice(index, 1)[0];
+  return todoList.items.splice(index, 1)[0];
   }
 }
 // Knapptryckning ta bort med index-nummer
@@ -90,8 +91,8 @@ $('#remove-with-index-number-button').on('click', function(){
 // Find index by description
 function findIndexByName(indexName){
   let index;
-  for (let i = 0; i < todoList.length; i++) {
-   if(todoList[i].description === indexName) {
+  for (let i = 0; i < todoList.items.length; i++) {
+   if(todoList.items[i].description === indexName) {
      index = i;
    };
  }
@@ -114,10 +115,10 @@ $('#remove-with-name-button').on('click', function(){
 // Ta bort från to-do och lägg till till done
 function removeFromListAndAddToDone(indexName){
   let index = findIndexByName(indexName);
-  let myObject = todoList[index];
-  doneList.push(myObject);
+  let myObject = todoList.items[index];
+  doneList.items.push(myObject);
   removeFromListByIndex(index);
-  return doneList;
+  return doneList.items;
 }
 
 // Knapptryck för flytt från to-do till done
@@ -128,69 +129,72 @@ $('#remove-from-list-and-add-button').on('click', function(){
   loopMyDoneList();
 });
 
-// Ta bort från listan och lägg till returnerade värdet till toppen av listan.
-function moveToTop(item){
-  addToTopOfList(removeFromListByName(item));
-  return todoList;
-}
-// Knapptryck för flytt till toppen av listan.
-$('#move-to-top-button').on('click', function(){
-  let index = $('#move-index').val();
-  moveToTop(index);
-  loopMyToDoList();
-  loopMyDoneList();
-});
-// Ta bort från listan och lägg till returnerade värdet till botten av listan.
-function moveToBottom(item){
-  addToList(removeFromListByName(item));
-  return todoList;
-}
-// Knapptryck för flytt till botten av listan.
-$('#move-to-bottom-button').on('click', function(){
-  let index = $('#move-index').val();
-  moveToBottom(index);
-  loopMyToDoList();
-  loopMyDoneList();
-});
 
-// Flytta ner ett steg.
-function moveDown(item){
-  // Tar ut index-nummer från ett namn.
-  let index = todoList.indexOf(item);
-  // Kollar om indexvärdet är först i listan
-  if(index + 1 < todoList.length){
-    // Byter plats på indexen.
-    todoList[index] = todoList[index + 1];
-    todoList[index + 1] = item;
-  }
-  return todoList;
-}
 
-// Knapptryck för flytt en ner.
-$('#move-down-button').on('click', function(){
-  let index = $('#move-index').val();
-  moveDown(index);
-  loopMyToDoList();
-  loopMyDoneList();
-});
-
-// Flytta upp ett steg.
-function moveUp(item){
-  // Tar ut index-nummer från ett namn.
-  let index = todoList.indexOf(item);
-  // Kollar om indexvärdet är först i listan
-  if(index > 0){
-    // Byter plats på indexen.
-    todoList[index] = todoList[index - 1];
-    todoList[index - 1] = item;
-  }
-  return todoList;
-}
-
-// Knapptryck för flytt en upp.
-$('#move-up-button').on('click', function(){
-  let index = $('#move-index').val();
-  moveUp(index);
-  loopMyToDoList();
-  loopMyDoneList();
-});
+//
+// // Ta bort från listan och lägg till returnerade värdet till toppen av listan.
+// function moveToTop(item){
+//   addToTopOfList(removeFromListByName(item));
+//   return todoList.items;
+// }
+// // Knapptryck för flytt till toppen av listan.
+// $('#move-to-top-button').on('click', function(){
+//   let index = $('#move-index').val();
+//   moveToTop(index);
+//   loopMyToDoList();
+//   loopMyDoneList();
+// });
+// // Ta bort från listan och lägg till returnerade värdet till botten av listan.
+// function moveToBottom(item){
+//   addToList(removeFromListByName(item));
+//   return todoList.items;
+// }
+// // Knapptryck för flytt till botten av listan.
+// $('#move-to-bottom-button').on('click', function(){
+//   let index = $('#move-index').val();
+//   moveToBottom(index);
+//   loopMyToDoList();
+//   loopMyDoneList();
+// });
+//
+// // Flytta ner ett steg.
+// function moveDown(item){
+//   // Tar ut index-nummer från ett namn.
+//   let index = todoList.items.indexOf(item);
+//   // Kollar om indexvärdet är först i listan
+//   if(index + 1 < todoList.items.length){
+//     // Byter plats på indexen.
+//     todoList.items[index] = todoList.items[index + 1];
+//     todoList.items[index + 1] = item;
+//   }
+//   return todoList.items;
+// }
+//
+// // Knapptryck för flytt en ner.
+// $('#move-down-button').on('click', function(){
+//   let index = $('#move-index').val();
+//   moveDown(index);
+//   loopMyToDoList();
+//   loopMyDoneList();
+// });
+//
+// // Flytta upp ett steg.
+// function moveUp(item){
+//   // Tar ut index-nummer från ett namn.
+//   let index = todoList.items.indexOf(item);
+//   // Kollar om indexvärdet är först i listan
+//   if(index > 0){
+//     // Byter plats på indexen.
+//     todoList.items[index] = todoList.items[index - 1];
+//     todoList.items[index - 1] = item;
+//   }
+//   return todoList.items;
+// }
+//
+// // Knapptryck för flytt en upp.
+// $('#move-up-button').on('click', function(){
+//   let index = $('#move-index').val();
+//   moveUp(index);
+//   loopMyToDoList();
+//   loopMyDoneList();
+// });

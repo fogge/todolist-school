@@ -2,22 +2,32 @@ let todoList = new TodoList([]);
 
 let doneList = new DoneList([]);
 
+
 // Loopar genom todoList med of-loop
 function updateListView(list, listSelector){
-  $(listSelector).empty();
-  for (let chore of list.items) {
-    $(listSelector).append(`
-      <li class="list-group-item">
+  let $myList = $(listSelector);
+  $myList.empty();
+  for (let i = 0; i < list.items.length; i++) {
+    let chore = list.items[i];
+    $myList.append(`
+      <li class="list-group-item" data-index="${i}">
         ${chore.print()}
+       <button class="btn btn-danger float-right deletebutton" id="deleteButton-${i}">X</button>
       </li>
       `);
     }
+    $myList.find('.deletebutton').on('click', function(){
+      console.log('du klickade mig');
+
+    });
+
 }
 
 function updateAllViews() {
   updateListView(todoList, '.todo-chore-list');
   updateListView(doneList, '.done-chore-list');
 }
+
 
 // Knapptryckning för lägg till längst ner i to-do-lista
 $('#add-last-button').on('click', function(){

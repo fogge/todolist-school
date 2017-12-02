@@ -41,25 +41,16 @@ $('#add-to-top-button').on('click', function(){
   loopMyToDoList();
 });
 
-// Ta bort sist i to-do-listan
-function removeFromBottomOfList(){
-  return todoList.items.pop();
-}
-
 // Knapptryckning ta bort sist i to-do-listan
 $('#remove-last-button').on('click', function(){
-  removeFromBottomOfList();
+  todoList.removeFromBottom();
   loopMyToDoList();
 });
 
-// Ta bort sist i to-do-listan
-function removeFromTopOfList(){
-  return todoList.items.shift();
-}
 
 // Knapptryckning ta bort sist i to-do-listan
 $('#remove-first-button').on('click', function(){
-  removeFromTopOfList();
+  todoList.removeFromTop();
   loopMyToDoList();
 });
 

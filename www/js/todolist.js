@@ -14,4 +14,12 @@ class TodoList {
     return todoList.items;
   }
 
+  removeFromBottom(){
+    return todoList.items.pop();
+  }
+
+  removeFromTop(){
+    return todoList.items.shift();
+  }
+
 }

@@ -25,30 +25,19 @@ function loopMyDoneList(){
     }
 }
 
-// Lägg till längst ner i to-do-lista
-function addToList(item) {
-  todoList.items.push(item);
-  return todoList.items;
-}
 // Knapptryckning för lägg till längst ner i to-do-lista
 $('#add-last-button').on('click', function(){
   const myText = $('#add-chore-to-list').val();
   const myItem = new TodoItem(myText);
-  addToList(myItem);
+  todoList.add(myItem);
   loopMyToDoList();
 });
-
-// Lägg till högst upp i to-do-lista
-function addToTopOfList(item) {
-  todoList.items.unshift(item);
-  return todoList.items;
-}
 
 // Knapptryckning för lägg till högst upp i to-do-lista
 $('#add-to-top-button').on('click', function(){
   const myText = $('#add-chore-to-list').val();
   const myItem = new TodoItem(myText);
-  addToTopOfList(myItem);
+  todoList.addToTop(myItem);
   loopMyToDoList();
 });
 

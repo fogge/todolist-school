@@ -1,18 +1,3 @@
-class TodoList {
-
-  // _items är en array
-  constructor(_items){
-    this.items = _items;
-  }
-}
-
-class DoneList {
-  // _items är en array
-  constructor(_items){
-  this.items = _items;
-  }
-}
-
 class TodoItem {
   constructor(_description){
     this.description = _description;

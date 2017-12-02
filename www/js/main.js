@@ -6,22 +6,48 @@ let doneList = new DoneList([]);
 // Loopar genom todoList med of-loop
 function updateListView(list, listSelector){
   let $myList = $(listSelector);
+
+  // Loopar ut och skapar html-kod för li-element och knapp.
   $myList.empty();
   for (let i = 0; i < list.items.length; i++) {
     let chore = list.items[i];
     $myList.append(`
-      <li class="list-group-item" data-index="${i}">
+      <li class="list-group-item">
         ${chore.print()}
-       <button class="btn btn-danger float-right deletebutton" id="deleteButton-${i}">X</button>
+       <button class="btn btn-danger float-right deletebutton "  data-index="${i}">X</button>
+       <button class="btn btn-success float-right completebutton mr-2"  data-index="${i}">✓</button>
       </li>
-      `);
-    }
-    $myList.find('.deletebutton').on('click', function(){
-      console.log('du klickade mig');
+    `);
+  }
 
-    });
+  // Remove completebutton from done-list.
+  $('.done-chore-list .completebutton').remove();
 
+  // Leta upp deleteknappar och få dom och fungera.
+  $myList.find('.deletebutton').on('click', function(){
+    let $btn = $(this);
+    let index = $btn.data('index');
+    list.removeWithIndex(index);
+    updateAllViews();
+  });
+
+  $myList.find('.completebutton').on('click', function(){
+    let $btn = $(this);
+    let index = $btn.data('index');
+    let myObject = list.items[index];
+    doneList.items.push(myObject);
+    list.removeWithIndex(index);
+    updateAllViews();
+  });
 }
+// Knapptryck för flytt från to-do till done
+$('#remove-from-list-and-add-button').on('click', function(){
+  let indexName = $('#remove-and-add-to-done').val();
+;
+  doneList.items.push(myObject);
+  todoList.removeWithIndex(index);
+  updateAllViews();
+});
 
 function updateAllViews() {
   updateListView(todoList, '.todo-chore-list');
@@ -73,15 +99,7 @@ $('#remove-with-name-button').on('click', function(){
   updateAllViews();
 });
 
-// Knapptryck för flytt från to-do till done
-$('#remove-from-list-and-add-button').on('click', function(){
-  let indexName = $('#remove-and-add-to-done').val();
-  let index = todoList.findIndexByName(indexName);
-  let myObject = todoList.items[index];
-  doneList.items.push(myObject);
-  todoList.removeWithIndex(index);
-  updateAllViews();
-});
+
 
 
 

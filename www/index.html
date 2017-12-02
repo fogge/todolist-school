@@ -14,101 +14,33 @@
   <body>
     <div class="container">
       <div class="row">
-       <div class="col-12 m-2">
-         <h3>To do list?</h3>
+       <div class="col-12 mt-3 mb-3">
+         <h3>THE MIGHTY TO DO LIST</h3>
        </div>
-       <div class="input-group m-2 col-12">
-         <span class="input-group-addon col-12 col-md-3">Add a chore: </span>
+     </div>
+     <div class="row mt-3 mb-5">
+       <div class="input-group col-12">
+         <span class="input-group-addon col-12 col-md-2">Add a chore: </span>
          <input type="text" class="form-control col-12 col-md-5" id="add-chore-to-list" placeholder="Add a chore to the list">
+         <input class="btn p-3 pr-4 pl-4 btn-success ml-3" type="submit" id="add-last-button" value="✓">
        </div>
-       <!-- Lägg till underst i listan -->
-       <div class="col-3">
-         <input class="btn m-2" type="submit" id="add-last-button" value="Add chore last!">
-       </div>
-       <!-- Lägg till överst i listen -->
-       <div class="col-3">
-         <input class="btn m-2" type="submit" id="add-to-top-button" value="Add chore first!">
-       </div>
-
      </div>
+
      <div class="row">
-       <div class="col-3">
-         <input class="btn m-2" type="submit" id="showListButton" value="Show my chores!">
-       </div>
-       <div class="col-3">
-         <input class="btn m-2" type="submit" id="remove-last-button" value="Remove chore from bottom!">
-       </div>
-
-       <div class="col-3">
-         <input class="btn m-2" type="submit" id="remove-first-button" value="Remove chore from the top!">
-       </div>
-
-       <div class="col-12">
-         <h3>To do list:</h3>
-         <ul class="todo-chore-list list-group">
-         </ul>
-
-         <h3 class="mt-5 mb-5">Done list</h3>
-         <ul class="done-chore-list list-group">
-         </ul>
-
-
-        <div class="input-group m-2">
-          <span class="input-group-addon col-4">Remove from To-do and add to done: </span>
-          <input type="text" class="form-control col-4" id="remove-and-add-to-done" placeholder="Indexname:">
-        </div>
-        <!-- Ta bort med nummer på index -->
-        <div class="col-3">
-          <input class="btn m-2" type="submit" id="remove-from-list-and-add-button" value="Move chore!">
-        </div>
-        <h3 id="wasMoved"></h3>
-
+         <div class="float-md-left col-md-6">
+           <h3>To do list:</h3>
+           <ul class="todo-chore-list list-group">
+           </ul>
+         </div>
+         <div class="float-md-right col-md-6">
+           <h3>Done list</h3>
+           <ul class="done-chore-list list-group">
+           </ul>
+         </div>
        </div>
      </div>
 
-    <div class="row">
-      <div class="input-group m-2 col-12">
-        <span class="input-group-addon col-3 col-md-3">Remove chore from index: </span>
-        <input type="text" class="form-control col-12 col-md-2" id="remove-chore-from-index" placeholder="Choose index here:">
-      </div>
-      <!-- Ta bort med nummer på index -->
-      <div class="col-3">
-        <input class="btn m-2" type="submit" id="remove-with-index-number-button" value="Remove chore!">
-      </div>
-
-
-      <div class="col-3">
-        <input class="btn m-2" type="submit" id="remove-with-name-button" value="Remove chore with name!">
-      </div>
-      <h2 class="notValidNumberText"></h2>
-    </div>
-      <!-- Flytta indexet
-    <div class="row">
-      <div class="input-group m-2 col-12">
-        <span class="input-group-addon col-3 col-md-3">Move chore: </span>
-        <input type="text" class="form-control col-12 col-md-2" id="move-index" placeholder="What chore:">
-      </div>
-
-      <div class="col-3">
-        <input class="btn m-2" type="submit" id="move-to-top-button" value="Move chore to top!">
-      </div>
-
-
-      <div class="col-3">
-        <input class="btn m-2" type="submit" id="move-to-bottom-button" value="Move chore to bottom!">
-      </div>
-
-      <div class="col-3">
-        <input class="btn m-2" type="submit" id="move-up-button" value="Move up one">
-      </div>
-
-      <div class="col-3">
-        <input class="btn m-2" type="submit" id="move-down-button" value="Move down one">
-      </div>
-    </div>-->
-  </div>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

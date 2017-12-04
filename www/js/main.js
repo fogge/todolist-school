@@ -12,14 +12,14 @@ function updateListView(list, listSelector){
   for (let i = 0; i < list.items.length; i++) {
     let chore = list.items[i];
     $myList.append(`
-      <li class="list-group-item pr-3 pl-0 d-flex">
+      <li class="list-group-item pl-0 pr-1 d-flex col-12">
        <div class="col-9">${chore.print()}</div>
-       <div class="col-3 d-inline-flex p-0 ml-auto justify-content-between">
-         <div class="btn-group-vertical">
+       <div class="col-3 d-inline-flex p-0 justify-content-end">
+         <div class="btn-group-vertical mr-md-2 d-none d-md-inline-flex">
            <button class="btn btn-dark movetopbutton"  data-index="${i}"><span class="fa fa-chevron-up overline"></span></button>
            <button class="btn btn-dark movebotbutton"  data-index="${i}"><span class="fa fa-chevron-down underline"></span></button>
          </div>
-         <div class="btn-group-vertical">
+         <div class="btn-group-vertical mr-md-2">
            <button class="btn btn-secondary moveupbutton"  data-index="${i}"><span class="fa fa-chevron-up"></span></button>
            <button class="btn btn-secondary movedownbutton"  data-index="${i}"><span class="fa fa-chevron-down"></span></button>
          </div>

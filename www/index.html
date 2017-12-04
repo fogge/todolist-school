@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Ubuntu:400,700" rel="stylesheet">
 
     <!-- Bootstrap and other CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -28,13 +29,11 @@
     </header>
 
 
-    <section class="bg-light p-5">
+    <section class="bgc-1 pt-4 p-md-5">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-3 order-1">
-            <div class="p-2">
-              <img class="img-fluid rounded-circle my-pictures" src="/img/todo.jpg" alt="">
-            </div>
+          <div class="col-md-3 mb-5 mb-md-0 order-1">
+            <img class="img-fluid rounded-circle my-pictures" src="/img/todo.jpg" alt="">
           </div>
           <div class="col-md-9 order-2">
             <div class="row mt-3 mb-5">
@@ -47,27 +46,40 @@
         </div>
       </div>
     </section>
-    <div class="container">
-      <div class="row">
-       <div class="col-12 mt-3 mb-3">
-         <h3>THE MIGHTY TO DO LIST</h3>
-       </div>
-     </div>
 
+    <section class="bgc-2 pt-4 pb-4 p-md-3 pb-md-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-5 mt-lg-5 mb-md-0 order-1 order-lg-2">
+            <img class="img-fluid rounded-circle my-pictures" src="/img/todo-unchecked.jpg" alt="">
+          </div>
+          <div class="col-md-9 p-0 p-md-3 order-1">
+            <h3 class="ml-3 ml-md-1 mb-3">My to do's:</h3>
+            <div class="col-12 order-3 p-0">
+              <ul class="todo-chore-list list-group">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-     <div class="row">
-         <div class="float-md-left col-md-6">
-           <h3>To do list:</h3>
-           <ul class="todo-chore-list list-group">
-           </ul>
-         </div>
-         <div class="float-md-right col-md-6">
-           <h3>Done list</h3>
-           <ul class="done-chore-list list-group">
-           </ul>
-         </div>
-       </div>
-     </div>
+    <section class="bgc-1 pt-4 pb-4 p-md-3 pb-md-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-5 mt-lg-3 mb-md-0 order-1 order-lg-2">
+            <img class="img-fluid rounded-circle my-pictures" src="/img/todo-checked.jpg" alt="">
+          </div>
+          <div class="col-md-9 p-0 p-md-3 mb-5 order-2">
+            <h3 class="ml-1 mb-3">What I've completed:</h3>
+            <div class="col-12 order-3 p-0">
+              <ul class="done-chore-list list-group">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

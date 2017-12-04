@@ -44,4 +44,43 @@ class TodoList {
    let index = this.findIndexByName(indexName);
    return this.removeByName(index);
   }
+
+  // Generell??
+  moveUp(index){
+    // Tar ut index-nummer från ett namn.
+    let myObject = this.items[index];
+    // Kollar om indexvärdet är först i listan
+    if(index > 0){
+      // Byter plats på indexen.
+      this.items[index] = this.items[index - 1];
+      this.items[index - 1] = myObject;
+    }
+  }
+
+  // Generell??
+  moveDown(index){
+    // Tar ut index-nummer från ett namn.
+    let myObject = this.items[index];
+    // Kollar om indexvärdet är först i listan
+    if(index + 1 < this.items.length){
+      // Byter plats på indexen.
+      this.items[index] = this.items[index + 1];
+      this.items[index + 1] = myObject;
+    }
+  }
+
+  // Generell
+  moveTop(index){
+      let myObject = this.items[index];
+      this.removeWithIndex(index);
+      this.addToTop(myObject);
+    }
+    
+  // Generell?
+  moveBot(index){
+      let myObject = this.items[index];
+      this.removeWithIndex(index);
+      this.add(myObject);
+    }
+
 }

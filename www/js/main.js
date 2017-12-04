@@ -12,10 +12,22 @@ function updateListView(list, listSelector){
   for (let i = 0; i < list.items.length; i++) {
     let chore = list.items[i];
     $myList.append(`
-      <li class="list-group-item">
-        ${chore.print()}
-       <button class="btn btn-danger float-right deletebutton "  data-index="${i}">X</button>
-       <button class="btn btn-success float-right completebutton mr-2"  data-index="${i}">✓</button>
+      <li class="list-group-item pr-3 pl-0 d-flex">
+       <div class="col-9">${chore.print()}</div>
+       <div class="col-3 d-inline-flex p-0 ml-auto justify-content-between">
+         <div class="btn-group-vertical">
+           <button class="btn btn-dark movetopbutton"  data-index="${i}"><span class="fa fa-chevron-up overline"></span></button>
+           <button class="btn btn-dark movebotbutton"  data-index="${i}"><span class="fa fa-chevron-down underline"></span></button>
+         </div>
+         <div class="btn-group-vertical">
+           <button class="btn btn-secondary moveupbutton"  data-index="${i}"><span class="fa fa-chevron-up"></span></button>
+           <button class="btn btn-secondary movedownbutton"  data-index="${i}"><span class="fa fa-chevron-down"></span></button>
+         </div>
+         <div class="btn-group-vertical">
+           <button class="btn btn-success completebutton"  data-index="${i}"><span class="fa fa-check"></span></button>
+           <button class="btn btn-danger deletebutton my-button"  data-index="${i}"><span class="fa fa-check fa fa-close"></span></button>
+         </div>
+       </div>
       </li>
     `);
   }
@@ -31,6 +43,7 @@ function updateListView(list, listSelector){
     updateAllViews();
   });
 
+  // Leta upp completebutton och få dom och fungera.
   $myList.find('.completebutton').on('click', function(){
     let $btn = $(this);
     let index = $btn.data('index');
@@ -39,7 +52,41 @@ function updateListView(list, listSelector){
     list.removeWithIndex(index);
     updateAllViews();
   });
+
+  // Leta upp completebutton och få dom och fungera.
+  $myList.find('.moveupbutton').on('click', function(){
+    let $btn = $(this);
+    let index = $btn.data('index');
+    list.moveUp(index);
+    updateAllViews();
+  });
+
+  $myList.find('.movedownbutton').on('click', function(){
+    let $btn = $(this);
+    let index = $btn.data('index');
+    list.moveDown(index);
+    updateAllViews();
+  });
+
+  $myList.find('.movetopbutton').on('click', function(){
+    let $btn = $(this);
+    let index = $btn.data('index');
+    list.moveTop(index);
+    updateAllViews();
+  });
+
+  $myList.find('.movebotbutton').on('click', function(){
+    let $btn = $(this);
+    let index = $btn.data('index');
+    list.moveBot(index);
+    updateAllViews();
+  });
+
 }
+
+
+
+
 // Knapptryck för flytt från to-do till done
 $('#remove-from-list-and-add-button').on('click', function(){
   let indexName = $('#remove-and-add-to-done').val();

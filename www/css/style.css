@@ -7,3 +7,11 @@
 body {
   background-color: #f9f1f9;
 }
+
+.overline {
+  text-decoration: overline;
+}
+
+.underline {
+  text-decoration: underline;
+}

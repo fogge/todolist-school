@@ -52,19 +52,21 @@
 
     <section class="bgc-1 p-md-3 pt-4 pb-md-5" id="myaddsection">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row">
           <div class="col-md-3 mb-5 mb-md-0 mt-md-3 order-1 d-none d-md-block">
             <img class="img-fluid rounded-circle my-pictures" src="/img/todo.jpg" alt="">
           </div>
           <div class="col-md-9 order-2">
-            <div class="row mt-3 mb-5">
+            <div class="row mb-5 mt-5">
               <div class="input-group col-12">
-                <input type="text" class="form-control col-12 col-md-12" id="add-chore-to-list" placeholder="Add a chore to the list">
-                <input class="btn p-3 pr-4 pl-4 btn-success ml-3" type="submit" id="add-last-button" value="✓">
+                <input type="text" class="form-control col-12 m-0" id="add-chore-to-list" placeholder="Add a chore to the list">
+                <button class="btn p-3 pr-4 pl-4 btn-success ml-3" id="add-last-button"><span class="fa fa-check"></span></button>
               </div>
+              <div class="p-3" id="show-added"></div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -119,6 +121,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
     <!-- My own JavaScript -->
+    <script src="/js/base.js"></script>
     <script src="/js/todolist.js"></script>
     <script src="/js/donelist.js"></script>
     <script src="/js/todoitem.js"></script>

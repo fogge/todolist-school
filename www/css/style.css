@@ -15,23 +15,36 @@ body {
   padding-top: 54px;
   font-family: 'Ubuntu', sans-serif;
 }
+body h6,
+body .h6 {
+  font-weight: 700;
+}
+body h3,
+body .cursivetext {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+body h1 {
+  font-size: 3rem;
+}
+body header .cursivetext {
+  text-shadow: 30px 30px 10px #111;
+}
+body nav .fa-pencil {
+  font-size: 30px;
+}
+body nav .cursivetext {
+  font-size: 24px;
+}
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
-}
-h6,
-.h6 {
-  font-weight: 700;
-}
-h3 {
-  font-family: 'Gloria Hallelujah', cursive;
-}
-.overline {
-  text-decoration: overline;
-}
-.underline {
-  text-decoration: underline;
+  header.masthead > .overlay {
+    padding: 5rem 0;
+  }
+  body h1 {
+    font-size: 6rem;
+  }
 }
 header.masthead {
   background: url('/img/header.png') no-repeat scroll;
@@ -45,14 +58,15 @@ header.masthead > .overlay {
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
 }
-@media (min-width: 992px) {
-  header.masthead > .overlay {
-    padding: 10rem 0;
-  }
+section ul li:nth-child(even) {
+  background-color: #f6f6f6;
 }
 .my-pictures {
   box-shadow: 5px 15px 10px #888888;
 }
-li:nth-child(even) {
-  background-color: #f6f6f6;
+.overline {
+  text-decoration: overline;
+}
+.underline {
+  text-decoration: underline;
 }

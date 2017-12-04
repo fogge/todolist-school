@@ -7,28 +7,43 @@
 body {
   padding-top: 54px;
   font-family: 'Ubuntu', sans-serif;
+  h6, .h6 {
+    font-weight: 700;
+  }
+
+  h3, .cursivetext {
+    font-family: 'Gloria Hallelujah', cursive;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  header {
+    .cursivetext {
+      text-shadow: 30px 30px 10px #111;
+    }
+  }
+  nav {
+    .fa-pencil{
+      font-size: 30px;
+    }
+    .cursivetext {
+      font-size: 24px;
+    }
+  }
 }
 
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
-}
-
-h6, .h6 {
-  font-weight: 700;
-}
-
-h3 {
-  font-family: 'Gloria Hallelujah', cursive;
-}
-
-.overline {
-  text-decoration: overline;
-}
-
-.underline {
-  text-decoration: underline;
+  header.masthead>.overlay {
+    padding: 5rem 0;
+  }
+  body {
+    h1 {
+      font-size: 6rem;
+    }
+  }
 }
 
 header.masthead {
@@ -45,9 +60,11 @@ header.masthead>.overlay {
   background: rgba(0, 0, 0, 0.6);
 }
 
-@media (min-width: 992px) {
-  header.masthead>.overlay {
-    padding: 10rem 0;
+section {
+  ul {
+    li:nth-child(even) {
+      background-color: @background-light;
+    }
   }
 }
 
@@ -55,6 +72,12 @@ header.masthead>.overlay {
   box-shadow: 5px 15px 10px #888888;
 }
 
-li:nth-child(even) {
-  background-color: @background-light;
+
+
+.overline {
+  text-decoration: overline;
+}
+
+.underline {
+  text-decoration: underline;
 }

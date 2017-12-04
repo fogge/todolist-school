@@ -5,7 +5,13 @@
 }
 
 body {
-  background-color: #f9f1f9;
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
 }
 
 .overline {
@@ -14,4 +20,30 @@ body {
 
 .underline {
   text-decoration: underline;
+}
+
+header.masthead {
+  background: url('/img/header.png') no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+header.masthead>.overlay {
+  padding: 5rem 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 992px) {
+  header.masthead>.overlay {
+    padding: 10rem 0;
+  }
+}
+
+.my-pictures {
+  box-shadow: 5px 15px 10px #888888;
+
+
 }

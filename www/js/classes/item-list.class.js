@@ -1,6 +1,7 @@
 class ItemList {
-  constructor(_items) {
-    this.items = _items;
+  constructor(items, jsonFileName) {
+    this.items = items;
+    this.jsonFileName = jsonFileName;
   }
 
   add(item) {
@@ -10,7 +11,7 @@ class ItemList {
 
   addMany(items){
     for (let i = 0; i < items.length; i++){
-      let item = new TodoItem();
+      let item = new Item();
       item.description = items[i].description;
       item.createdAt = items[i].createdAt;
       item.completed = items[i].completed;
@@ -90,8 +91,8 @@ class ItemList {
     this.add(myObject);
   }
 
-  loadJSON(listFileName, callback){
-    JSON._load(listFileName)
+  loadJSON(callback){
+    JSON._load(this.jsonFileName)
     .then((data) => {
       this.removeAll();
       this.addMany(data.items);
@@ -99,8 +100,8 @@ class ItemList {
     });
   }
 
-  saveJSON(listFileName){
-    JSON._save(listFileName, {
+  saveJSON(){
+    JSON._save(this.jsonFileName, {
         items: this.items
     });
   }

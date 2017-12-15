@@ -1,5 +1,5 @@
-let todoList = new ItemList([]);
-let doneList = new ItemList([]);
+let todoList = new ItemList([], 'todolist');
+let doneList = new ItemList([], 'donelist');
 
 
 function updateListView(list, listSelector){
@@ -90,7 +90,7 @@ function updateAllViews() {
 
 function showAndClear(myText){
   if (myText !== '') {
-    const myItem = new TodoItem(myText);
+    const myItem = new Item(myText);
     todoList.add(myItem);
     updateAllViews();
     $('#show-added').append(`<p class="showadded">You've added: ${myText}</p>`);
@@ -115,17 +115,16 @@ $('#add-last-button').on('click', function(){
 });
 
 function saveAllJSON(){
-  todoList.saveJSON('todolist');
-  doneList.saveJSON('donelist');
+  todoList.saveJSON();
+  doneList.saveJSON();
 }
 
 function loadAllJSON(){
-  todoList.loadJSON('todolist', function(loadedItems){
+  todoList.loadJSON(function(loadedItems){
     updateAllViews();
   });
-
   // Arrow function
-  doneList.loadJSON('donelist', loadedItems => updateAllViews());
+  doneList.loadJSON(loadedItems => updateAllViews());
 }
 
 loadAllJSON();

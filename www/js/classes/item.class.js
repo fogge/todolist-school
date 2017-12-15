@@ -1,6 +1,6 @@
-class TodoItem {
-  constructor(_description){
-    this.description = _description;
+class Item {
+  constructor(description){
+    this.description = description;
     this.createdAt = new Date().toLocaleDateString();
     this.completed = false;
   }

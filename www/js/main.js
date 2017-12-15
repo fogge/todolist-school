@@ -83,12 +83,6 @@ function updateListView(list, listSelector){
 
 }
 
-function saveJSON(){
-  JSON._save('items', {
-      items: todoList.items
-  });
-}
-
 function updateAllViews() {
   updateListView(todoList, '.todo-chore-list');
   updateListView(doneList, '.done-chore-list');
@@ -119,3 +113,21 @@ $('#add-last-button').on('click', function(){
   const myText = $('#add-chore-to-list').val();
   showAndClear(myText);
 });
+
+function saveJSON(){
+  JSON._save('todolist', {
+      items: todoList.items
+  });
+}
+
+function loadJSON(){
+  JSON._load('todolist')
+  .then((data) => {
+    todoList.removeAll();
+    todoList.addMany(data.items);
+    console.log(todoList.items);
+    updateAllViews();
+  });
+}
+
+loadJSON();

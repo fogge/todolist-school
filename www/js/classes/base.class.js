@@ -5,6 +5,16 @@ class BaseList {
     return this.items;
   }
 
+  addMany(items){
+    for (let i = 0; i < items.length; i++){
+      let item = new TodoItem();
+      item.description = items[i].description;
+      item.createdAt = items[i].createdAt;
+      item.completed = items[i].completed;
+      this.add(item);
+    }
+  }
+
   addToTop(item) {
     this.items.unshift(item);
     return this.items;
@@ -22,6 +32,10 @@ class BaseList {
     if (index >= 0) {
     return this.items.splice(index, 1)[0];
     }
+  }
+
+  removeAll(){
+    this.items.length = 0;
   }
 
   findIndexByName(indexName){

@@ -76,15 +76,30 @@ class BaseList {
   }
 
   moveTop(index){
-      let myObject = this.items[index];
-      this.removeWithIndex(index);
-      this.addToTop(myObject);
-    }
+    let myObject = this.items[index];
+    this.removeWithIndex(index);
+    this.addToTop(myObject);
+  }
 
   moveBot(index){
-      let myObject = this.items[index];
-      this.removeWithIndex(index);
-      this.add(myObject);
-    }
+    let myObject = this.items[index];
+    this.removeWithIndex(index);
+    this.add(myObject);
+  }
+
+  loadJSON(listFileName, callback){
+    JSON._load(listFileName)
+    .then((data) => {
+      this.removeAll();
+      this.addMany(data.items);
+      callback(data.items);
+    });
+  }
+
+  saveJSON(listFileName){
+    JSON._save(listFileName, {
+        items: this.items
+    });
+  }
 
 }

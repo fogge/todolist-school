@@ -1,18 +1,13 @@
 {
   "items": [
     {
-      "description": "Lalala",
-      "createdAt": "2017-12-15T20:44:41.456Z",
+      "description": "dsadas",
+      "createdAt": "12/15/2017",
       "completed": false
     },
     {
       "description": "dsadsa",
-      "createdAt": "2017-12-15T20:44:56.910Z",
-      "completed": false
-    },
-    {
-      "description": "ddd",
-      "createdAt": "2017-12-15T20:44:58.991Z",
+      "createdAt": "12/16/2017",
       "completed": false
     }
   ]

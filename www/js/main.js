@@ -28,7 +28,6 @@ function updateListView(list, listSelector){
        </div>
       </li>
     `);
-    saveJSON();
   }
 
   // Remove completebutton from done-list.
@@ -86,6 +85,7 @@ function updateListView(list, listSelector){
 function updateAllViews() {
   updateListView(todoList, '.todo-chore-list');
   updateListView(doneList, '.done-chore-list');
+  saveAllJSON();
 }
 
 function showAndClear(myText){
@@ -114,20 +114,18 @@ $('#add-last-button').on('click', function(){
   showAndClear(myText);
 });
 
-function saveJSON(){
-  JSON._save('todolist', {
-      items: todoList.items
-  });
+function saveAllJSON(){
+  todoList.saveJSON('todolist');
+  doneList.saveJSON('donelist');
 }
 
-function loadJSON(){
-  JSON._load('todolist')
-  .then((data) => {
-    todoList.removeAll();
-    todoList.addMany(data.items);
-    console.log(todoList.items);
+function loadAllJSON(){
+  todoList.loadJSON('todolist', function(loadedItems){
     updateAllViews();
   });
+
+  // Arrow function
+  doneList.loadJSON('donelist', loadedItems => updateAllViews());
 }
 
-loadJSON();
+loadAllJSON();

@@ -1,5 +1,5 @@
-let todoList = new TodoList([]);
-let doneList = new DoneList([]);
+let todoList = new ItemList([]);
+let doneList = new ItemList([]);
 
 
 function updateListView(list, listSelector){

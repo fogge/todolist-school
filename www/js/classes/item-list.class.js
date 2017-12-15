@@ -1,4 +1,7 @@
-class BaseList {
+class ItemList {
+  constructor(_items) {
+    this.items = _items;
+  }
 
   add(item) {
     this.items.push(item);

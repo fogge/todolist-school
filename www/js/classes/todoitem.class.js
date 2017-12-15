@@ -10,5 +10,4 @@ class TodoItem {
     printText += `<p><span class="h6">What to do: </span>${this.description}</p>`;
     return printText;
   }
-
 }

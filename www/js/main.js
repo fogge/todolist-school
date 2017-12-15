@@ -2,7 +2,6 @@ let todoList = new TodoList([]);
 let doneList = new DoneList([]);
 
 
-// Loopar genom todoList med of-loop
 function updateListView(list, listSelector){
   let $myList = $(listSelector);
 
@@ -29,6 +28,7 @@ function updateListView(list, listSelector){
        </div>
       </li>
     `);
+    saveJSON();
   }
 
   // Remove completebutton from done-list.
@@ -81,6 +81,12 @@ function updateListView(list, listSelector){
     updateAllViews();
   });
 
+}
+
+function saveJSON(){
+  JSON._save('items', {
+      items: todoList.items
+  });
 }
 
 function updateAllViews() {
